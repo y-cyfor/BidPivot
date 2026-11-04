@@ -1,0 +1,21 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: bidpivot-backend-pdb
+  namespace: bidpivot
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: bidpivot-backend
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: bidpivot-celery-pdb
+  namespace: bidpivot
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: bidpivot-celery

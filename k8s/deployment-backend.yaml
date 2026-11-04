@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bidpivot-backend
+  namespace: bidpivot
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: bidpivot-backend
+  template:
+    metadata:
+      labels:
+        app: bidpivot-backend
+    spec:
+      containers:
+        - name: backend
+          image: bidpivot-backend:latest
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - secretRef:
+                name: bidpivot-secrets
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 10
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"

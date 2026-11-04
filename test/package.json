@@ -1,0 +1,14 @@
+{
+  "name": "bidpivot-e2e-tests",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "playwright test --config=scripts/playwright.config.js",
+    "test:headed": "playwright test --config=scripts/playwright.config.js --headed",
+    "test:ui": "playwright test --config=scripts/playwright.config.js --ui",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.52.0"
+  }
+}

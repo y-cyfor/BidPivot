@@ -1,0 +1,24 @@
+{
+  "database": {
+    "url": "postgresql+asyncpg://bidpivot:bidpivot_dev@localhost:5432/bidpivot"
+  },
+  "redis": {
+    "url": "redis://localhost:6379/0"
+  },
+  "qdrant": {
+    "url": "http://localhost:6333"
+  },
+  "minio": {
+    "endpoint": "localhost:9000",
+    "access_key": "minioadmin",
+    "secret_key": "minioadmin",
+    "bucket": "bidpivot"
+  },
+  "jwt": {
+    "secret": "change-me-to-a-random-string",
+    "expire_minutes": 1440
+  },
+  "server": {
+    "cors_origins": ["http://localhost:5173"]
+  }
+}
